@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio LanaVyn Official (Anonym)</title>
+    <!-- Memuat Tailwind CSS untuk styling modern dan responsif -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Konfigurasi Font Inter -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1117; /* Warna latar belakang gelap */
+            color: #c9d1d9; /* Warna teks terang */
+        }
+        .card {
+            background-color: #161b22; /* Warna card lebih gelap */
+            border: 1px solid #30363d;
+        }
+        .star-rating label {
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .star-rating input:checked ~ label,
+        .star-rating label:hover,
+        .star-rating label:hover ~ label {
+            color: #FBBF24; /* Warna kuning untuk bintang */
+        }
+        /* Style untuk audio player kustom */
+        #audio-player {
+            width: 100%;
+            height: 40px;
+            background-color: #30363d;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-8">
+
+    <div id="app" class="max-w-4xl mx-auto">
+
+        <!-- Header dan Profil -->
+        <header class="text-center mb-8">
+            <h1 class="text-4xl sm:text-5xl font-extrabold text-[#5390e9] mb-2">LanaVyn Official</h1>
+            <p class="text-lg text-gray-400">Personal Portofolio | The Blue Rabbit</p>
+        </header>
+
+        <main class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10">
+
+            <!-- Kolom 1: Informasi Dasar -->
+            <div class="lg:col-span-1 card p-6 rounded-xl shadow-lg h-full">
+                <h2 class="text-2xl font-bold border-b border-gray-600 pb-2 mb-4 text-blue-400">Informasi Pribadi</h2>
+                <div id="profile-info" class="space-y-3">
+                    <!-- Data profil akan diisi oleh JavaScript -->
+                </div>
+            </div>
+
+            <!-- Kolom 2: Kontak dan Musik -->
+            <div class="lg:col-span-2 space-y-6">
+                <!-- Kontak -->
+                <div class="card p-6 rounded-xl shadow-lg">
+                    <h2 class="text-2xl font-bold border-b border-gray-600 pb-2 mb-4 text-blue-400">Kontak Saya</h2>
+                    <div id="contact-info" class="flex flex-wrap gap-4 text-sm sm:text-base">
+                        <!-- Data kontak akan diisi oleh JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Musik Favorit -->
+                <div class="card p-6 rounded-xl shadow-lg">
+                    <h2 class="text-2xl font-bold border-b border-gray-600 pb-2 mb-4 text-blue-400">Musik Favorit</h2>
+                    <div id="favorite-song" class="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-6">
+                        <!-- Cover Album -->
+                        <div class="flex-shrink-0 w-full sm:w-32 h-32 rounded-lg overflow-hidden border border-gray-600">
+                            <img id="song-cover" src="https://files.catbox.moe/2dgtmh.jpeg" onerror="this.onerror=null; this.src='https://placehold.co/128x128/30363d/c9d1d9?text=COVER';" alt="Cover Album" class="w-full h-full object-cover">
+                        </div>
+                        
+                        <div class="flex-grow w-full">
+                            <p class="text-xl font-semibold text-white mb-2" id="song-title">A girl within my soul</p>
+                            <!-- Audio Player -->
+                            <audio id="audio-player" controls preload="auto">
+                                <source src="https://files.catbox.moe/gf3fiz.mp3" type="audio/mp3">
+                                Browser Anda tidak mendukung elemen audio.
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rating dan Komentar -->
+                <div class="card p-6 rounded-xl shadow-lg">
+                    <h2 class="text-2xl font-bold border-b border-gray-600 pb-2 mb-4 text-blue-400">Rating & Komentar</h2>
+                    
+                    <!-- Display Rating Rata-rata -->
+                    <div class="mb-4 flex items-center space-x-2">
+                        <span id="average-rating" class="text-4xl font-extrabold text-yellow-400">0.0</span>
+                        <span id="star-display" class="text-3xl text-yellow-400"></span>
+                        <span id="comment-count" class="text-gray-400 text-sm">(0 Komentar)</span>
+                    </div>
+
+                    <!-- Form Komentar -->
+                    <form id="comment-form" class="space-y-3 p-4 bg-gray-700/30 rounded-lg">
+                        <p class="font-medium text-gray-300">Berikan Komentar (Anonim) & Rating:</p>
+                        
+                        <!-- Input Rating Bintang -->
+                        <div class="flex items-center space-x-2">
+                            <label for="rating" class="text-gray-400">Nilai:</label>
+                            <div id="rating-input" class="star-rating flex flex-row-reverse justify-end text-3xl">
+                                <!-- Bintang di sini, menggunakan UTF-8 star symbol -->
+                                <input type="radio" id="star5" name="rating" value="5" class="hidden" required><label for="star5" class="text-gray-500 hover:text-yellow-400 transition-colors">★</label>
+                                <input type="radio" id="star4" name="rating" value="4" class="hidden"><label for="star4" class="text-gray-500 hover:text-yellow-400 transition-colors">★</label>
+                                <input type="radio" id="star3" name="rating" value="3" class="hidden"><label for="star3" class="text-gray-500 hover:text-yellow-400 transition-colors">★</label>
+                                <input type="radio" id="star2" name="rating" value="2" class="hidden"><label for="star2" class="text-gray-500 hover:text-yellow-400 transition-colors">★</label>
+                                <input type="radio" id="star1" name="rating" value="1" class="hidden"><label for="star1" class="text-gray-500 hover:text-yellow-400 transition-colors">★</label>
+                            </div>
+                        </div>
+
+                        <!-- Input Komentar -->
+                        <textarea id="comment-text" rows="3" class="w-full p-2 rounded bg-[#0d1117] border border-gray-600 focus:border-blue-500 focus:ring focus:ring-blue-500/50" placeholder="Tulis komentar Anda di sini... (Anonim)"></textarea>
+                        
+                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-lg transition duration-200">Kirim Komentar</button>
+                    </form>
+
+                    <!-- Daftar Komentar -->
+                    <div class="mt-6">
+                        <h3 class="text-xl font-semibold mb-3 text-blue-300">Komentar Pengunjung</h3>
+                        <div id="comments-list" class="space-y-4">
+                            <!-- Komentar akan diisi oleh JavaScript -->
+                            <p class="text-gray-500 italic" id="no-comments">Belum ada komentar. Jadilah yang pertama!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Pesan Notifikasi (untuk pengganti alert) -->
+        <div id="notification-box" class="fixed bottom-4 right-4 bg-green-500 text-white p-3 rounded-lg shadow-xl hidden transition-opacity duration-300" style="opacity: 0;">
+            Komentar berhasil ditambahkan!
+        </div>
+
+    </div>
+
+    <script>
+        // Data Statis Portofolio (Data Anda)
+        const PORTFOLIO_DATA = {
+            name: "LanaVyn Official (Anonym)",
+            age: 15,
+            gender: "Man",
+            region: "Secret Java, Indonesia",
+            favoriteColor: "Blue",
+            favoriteNumber: 7,
+            zodiak: "Cancer",
+            shio: "Kelinci",
+            
+            contact: [
+                { type: "Tiktok", link: "https://www.tiktok.com/@istimewasekali.viewone?_r=1&_t=ZS-917NAa8teXh", icon: "📱", color: "text-pink-400" },
+                { type: "Telegram", link: "https://t.me/LanaVynOfficial", icon: "✈️", color: "text-blue-400" },
+                { type: "Whatsapp", link: "https://wa.me/601161004161", text: "+60 11-6100-4161", icon: "💬", color: "text-green-400" }
+            ],
+        };
+
+        // Kunci untuk menyimpan data di localStorage
+        const STORAGE_KEY = 'lanavyn_portfolio_comments';
+
+        /**
+         * Mengambil data komentar dan rating dari localStorage.
+         * Jika belum ada, menginisialisasi dengan array kosong.
+         * @returns {Array<Object>} Daftar komentar yang tersimpan.
+         */
+        function getComments() {
+            try {
+                const storedData = localStorage.getItem(STORAGE_KEY);
+                return storedData ? JSON.parse(storedData) : [];
+            } catch (e) {
+                console.error("Gagal mengambil data dari localStorage:", e);
+                return []; // Mengembalikan array kosong jika gagal
+            }
+        }
+
+        /**
+         * Menyimpan array komentar baru ke localStorage.
+         * @param {Array<Object>} comments - Array komentar yang akan disimpan.
+         */
+        function saveComments(comments) {
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(comments));
+            } catch (e) {
+                console.error("Gagal menyimpan data ke localStorage:", e);
+                // Menampilkan notifikasi error kustom (bukan alert)
+                showNotification("Gagal menyimpan data! Mungkin penyimpanan browser penuh.", 'bg-red-500');
+            }
+        }
+
+        /**
+         * Menghitung rata-rata rating dan memperbarui UI.
+         * @param {Array<Object>} comments - Daftar komentar.
+         */
+        function updateRatingDisplay(comments) {
+            const totalComments = comments.length;
+            const avgRatingEl = document.getElementById('average-rating');
+            const starDisplayEl = document.getElementById('star-display');
+            const commentCountEl = document.getElementById('comment-count');
+
+            if (totalComments === 0) {
+                avgRatingEl.textContent = '0.0';
+                starDisplayEl.textContent = '☆☆☆☆☆';
+                commentCountEl.textContent = '(0 Komentar)';
+                return;
+            }
+
+            // Menghitung total rating
+            const totalRating = comments.reduce((sum, comment) => sum + parseInt(comment.rating), 0);
+            const average = (totalRating / totalComments).toFixed(1);
+
+            avgRatingEl.textContent = average;
+            commentCountEl.textContent = `(${totalComments} Komentar)`;
+
+            // Menampilkan bintang penuh (★) dan kosong (☆) berdasarkan rata-rata
+            const fullStars = Math.floor(average);
+            const emptyStars = 5 - fullStars;
+            let starString = '★'.repeat(fullStars) + '☆'.repeat(emptyStars);
+            starDisplayEl.textContent = starString;
+        }
+
+        /**
+         * Merender daftar komentar dan memperbarui UI.
+         */
+        function renderComments() {
+            const comments = getComments();
+            const listEl = document.getElementById('comments-list');
+            const noCommentsEl = document.getElementById('no-comments');
+            listEl.innerHTML = ''; // Bersihkan daftar
+
+            if (comments.length === 0) {
+                noCommentsEl.classList.remove('hidden');
+            } else {
+                noCommentsEl.classList.add('hidden');
+                
+                // Urutkan dari yang terbaru (opsional)
+                comments.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+                comments.forEach(comment => {
+                    const commentDiv = document.createElement('div');
+                    commentDiv.className = 'p-3 rounded-lg border border-gray-700/50 bg-gray-700/20';
+
+                    // Rating bintang
+                    const stars = '★'.repeat(comment.rating) + '☆'.repeat(5 - comment.rating);
+                    
+                    // Format tanggal dan waktu
+                    const date = new Date(comment.timestamp).toLocaleString('id-ID', { 
+                        year: 'numeric', month: 'short', day: 'numeric', 
+                        hour: '2-digit', minute: '2-digit'
+                    });
+
+                    commentDiv.innerHTML = `
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="font-bold text-sm text-yellow-400">${stars}</span>
+                            <span class="text-xs text-gray-500">${date}</span>
+                        </div>
+                        <p class="text-sm text-gray-300">${comment.text}</p>
+                        <p class="text-xs italic text-gray-500 mt-1">- Anonim</p>
+                    `;
+                    listEl.appendChild(commentDiv);
+                });
+            }
+
+            updateRatingDisplay(comments);
+        }
+
+        /**
+         * Menangani submit form komentar.
+         * @param {Event} e - Event submit.
+         */
+        function handleCommentSubmit(e) {
+            e.preventDefault();
+
+            const textInput = document.getElementById('comment-text');
+            const ratingInput = document.querySelector('input[name="rating"]:checked');
+
+            const text = textInput.value.trim();
+            const rating = ratingInput ? parseInt(ratingInput.value) : null;
+
+            if (text === "" || rating === null) {
+                showNotification("Mohon isi komentar dan berikan rating (bintang)!", 'bg-yellow-500');
+                return;
+            }
+
+            const newComment = {
+                text: text,
+                rating: rating,
+                timestamp: new Date().toISOString()
+            };
+
+            const comments = getComments();
+            comments.push(newComment);
+            saveComments(comments);
+
+            // Bersihkan form
+            textInput.value = '';
+            if (ratingInput) ratingInput.checked = false;
+
+            // Perbarui tampilan
+            renderComments();
+            showNotification("Komentar berhasil ditambahkan!", 'bg-green-500');
+        }
+
+        /**
+         * Menampilkan notifikasi kustom (pengganti alert).
+         * @param {string} message - Pesan notifikasi.
+         * @param {string} bgColorClass - Kelas warna latar belakang Tailwind.
+         */
+        function showNotification(message, bgColorClass = 'bg-green-500') {
+            const box = document.getElementById('notification-box');
+            box.textContent = message;
+            
+            // Atur warna
+            box.className = box.className.replace(/bg-\w+-\d+/g, bgColorClass);
+
+            box.classList.remove('hidden');
+            setTimeout(() => box.style.opacity = 1, 10); // Mulai transisi
+            
+            setTimeout(() => {
+                box.style.opacity = 0; // Mulai transisi menghilang
+                setTimeout(() => box.classList.add('hidden'), 300); // Sembunyikan setelah transisi
+            }, 3000);
+        }
+
+        /**
+         * Inisialisasi data profil.
+         */
+        function renderProfileInfo() {
+            const infoEl = document.getElementById('profile-info');
+            const contactEl = document.getElementById('contact-info');
+            
+            // Data Profil
+            const profileItems = [
+                { label: "Nama", value: PORTFOLIO_DATA.name },
+                { label: "Umur", value: PORTFOLIO_DATA.age },
+                { label: "Gender", value: PORTFOLIO_DATA.gender },
+                { label: "Wilayah", value: PORTFOLIO_DATA.region },
+                { label: "Warna Favorit", value: PORTFOLIO_DATA.favoriteColor },
+                { label: "Angka Favorit", value: PORTFOLIO_DATA.favoriteNumber },
+                { label: "Zodiak", value: PORTFOLIO_DATA.zodiak },
+                { label: "Shio", value: PORTFOLIO_DATA.shio },
+            ];
+
+            infoEl.innerHTML = profileItems.map(item => `
+                <p class="text-sm">
+                    <span class="font-semibold text-gray-300">${item.label}:</span> 
+                    <span class="text-gray-400">${item.value}</span>
+                </p>
+            `).join('');
+
+            // Data Kontak
+            contactEl.innerHTML = PORTFOLIO_DATA.contact.map(item => {
+                const display = item.text || item.link.replace(/^https?:\/\//, '').replace(/^t\.me\//, '');
+                return `
+                    <a href="${item.link}" target="_blank" class="flex items-center space-x-2 p-2 rounded-lg card hover:bg-gray-700/40 transition">
+                        <span class="text-lg ${item.color}">${item.icon}</span>
+                        <span class="text-white font-medium">${item.type}</span>
+                        <span class="text-xs text-gray-400 truncate max-w-[150px] sm:max-w-none">${display}</span>
+                    </a>
+                `;
+            }).join('');
+        }
+
+        // --- Inisialisasi Saat Dokumen Dimuat ---
+        window.onload = function() {
+            // 1. Render data statis
+            renderProfileInfo();
+            
+            // 2. Muat dan tampilkan komentar/rating dari localStorage
+            renderComments();
+
+            // 3. Tambahkan event listener ke form
+            const form = document.getElementById('comment-form');
+            form.addEventListener('submit', handleCommentSubmit);
+            
+            // 4. Tambahkan sedikit styling ke audio player default (jika diperlukan)
+            const audioPlayer = document.getElementById('audio-player');
+            audioPlayer.className = 'w-full rounded-lg bg-gray-700/50';
+        };
+
+    </script>
+</body>
+</html>
