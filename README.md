@@ -3,130 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>README.md Web Terbaik</title>
-    <!-- Memuat Tailwind CSS -->
+    <title>README.md - Proyek Aurora (Gaya GitHub)</title>
+    <!-- Memuat Tailwind CSS untuk styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        /* Menggunakan font Inter untuk teks, dan JetBrains Mono untuk kode */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=JetBrains+Mono:wght@400;700&display=swap');
+
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0F172A; /* Slate 900 - Latar belakang gelap */
-            color: #E2E8F0; /* Slate 200 - Warna teks utama */
+            background-color: #010409; /* Warna latar belakang GitHub Dark */
+            color: #C9D1D9; /* Warna teks utama */
             line-height: 1.6;
         }
-        /* Styling untuk konten (meniru Markdown) */
-        .markdown-body h1 { @apply text-4xl font-extrabold border-b border-blue-500/50 pb-3 mb-6 mt-8 text-white; }
-        .markdown-body h2 { @apply text-2xl font-bold border-b border-gray-600 pb-2 mb-4 mt-6 text-slate-200; }
-        .markdown-body h3 { @apply text-xl font-semibold mb-3 mt-4 text-blue-300; }
-        .markdown-body p { @apply mb-4; }
-        .markdown-body ul, .markdown-body ol { @apply list-inside mb-4 pl-4 space-y-2; }
-        .markdown-body ul { @apply list-disc; }
-        .markdown-body ol { @apply list-decimal; }
-        .markdown-body a { @apply text-blue-400 hover:text-blue-300 underline transition duration-200; }
-        .markdown-body code {
-            font-family: 'JetBrains Mono', monospace;
-            @apply bg-slate-700/50 text-yellow-300 px-1 py-0.5 rounded text-sm;
+
+        .container-readme {
+            /* Meniru card konten utama di GitHub */
+            background-color: #0D1117; 
+            border: 1px solid #30363D;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
-        .markdown-body pre {
+
+        /* --- Styling Elemen Markdown --- */
+        .md-content h1 { @apply text-3xl font-bold border-b border-gray-700 pb-3 mb-6 mt-6 text-white; }
+        .md-content h2 { @apply text-2xl font-semibold border-b border-gray-700 pb-2 mb-4 mt-6 text-gray-200; }
+        .md-content h3 { @apply text-xl font-semibold mb-3 mt-4 text-blue-400; }
+        .md-content p { @apply mb-4; }
+        
+        .md-content ul, .md-content ol { @apply list-inside mb-4 pl-4 space-y-1; }
+        .md-content ul { @apply list-disc; }
+        .md-content ol { @apply list-decimal; }
+
+        .md-content a { @apply text-blue-500 hover:text-blue-400 font-medium transition duration-150; }
+        
+        /* Inline Code */
+        .md-content code {
             font-family: 'JetBrains Mono', monospace;
-            @apply bg-slate-800 p-4 rounded-lg overflow-x-auto shadow-lg text-green-300 text-sm;
+            @apply bg-[#30363D] text-[#56D4D9] px-1 py-0.5 rounded text-sm;
         }
-        .badge {
-            @apply inline-flex items-center px-3 py-1 text-xs font-medium rounded-full;
+
+        /* Code Block (Preformatted) */
+        .md-content pre {
+            font-family: 'JetBrains Mono', monospace;
+            @apply bg-[#0D1117] border border-gray-700 p-4 rounded-lg overflow-x-auto text-sm shadow-inner mb-4;
+        }
+        /* Meniru Syntax Highlighting: Warna khusus untuk variabel/keyword JS */
+        .md-content pre .keyword { color: #FF7B72; font-weight: bold; } /* Merah */
+        .md-content pre .string { color: #A5D6FF; } /* Biru Muda */
+        .md-content pre .comment { color: #8B949E; } /* Abu-abu */
+        .md-content pre .variable { color: #FFA657; } /* Oranye */
+
+        .md-content blockquote {
+            @apply border-l-4 border-blue-500 pl-4 py-2 italic text-gray-400 bg-gray-800/50 rounded-r-md;
+        }
+
+        .md-content table {
+            @apply w-full text-left border-collapse mb-4;
+        }
+        .md-content th, .md-content td {
+            @apply border border-gray-700 p-3;
+        }
+        .md-content th {
+            @apply bg-gray-800 font-semibold text-white;
         }
     </style>
 </head>
 <body class="p-4 sm:p-8">
 
-    <!-- Container Utama: Maksimal 800px lebar, terpusat -->
-    <div class="max-w-4xl mx-auto py-10 card p-6 sm:p-10 rounded-2xl shadow-2xl bg-slate-900 border border-slate-700">
+    <!-- Kontainer Utama -->
+    <div class="max-w-5xl mx-auto py-8 container-readme p-6 sm:p-10 rounded-xl">
 
-        <!-- Header / Judul Proyek -->
-        <header class="text-center mb-10">
-            <div class="space-x-2 mb-4">
-                <span class="badge bg-green-500/20 text-green-400">Versi 1.0.0</span>
-                <span class="badge bg-purple-500/20 text-purple-400">Lisensi MIT</span>
-                <span class="badge bg-yellow-500/20 text-yellow-400">Status: Aktif</span>
+        <!-- Header dan Badges -->
+        <header class="mb-8 border-b border-gray-700 pb-4">
+            <!-- Badges Realistis (gunakan gambar dari Shields.io) -->
+            <div class="flex flex-wrap gap-2 mb-4">
+                <img src="https://img.shields.io/github/last-commit/lanavyn/aurora-project?style=flat-square&color=3B82F6&label=Update" alt="Update Terakhir">
+                <img src="https://img.shields.io/github/issues/lanavyn/aurora-project?style=flat-square&color=FFC107&label=Isu" alt="Total Isu">
+                <img src="https://img.shields.io/badge/Lisensi-MIT-success?style=flat-square" alt="Lisensi MIT">
+                <img src="https://img.shields.io/badge/Bahasa-JS%2FHMTL-E03C31?style=flat-square" alt="Bahasa Utama">
             </div>
-            <h1 class="text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500 mb-2">
-                PROJECT KODE-NAMA: ARGON
+
+            <h1 class="text-4xl font-extrabold text-white">
+                Proyek AURORA 🌟
             </h1>
-            <p class="text-xl text-slate-400 italic">Solusi Inovatif untuk Manajemen Portofolio Digital.</p>
+            <p class="text-lg text-gray-400 mt-2">
+                Kerangka Kerja Statis Sederhana untuk Portofolio Minimalis (Single-File).
+            </p>
         </header>
-        
-        <!-- Badge / Status Proyek -->
-        <div class="flex flex-wrap justify-center gap-3 mb-10">
-            <!-- Contoh Badge Fiktif -->
-            <img src="https://img.shields.io/github/stars/user/repo?style=flat&color=4C1D95&label=Stars" alt="GitHub Stars">
-            <img src="https://img.shields.io/github/last-commit/user/repo?style=flat&color=3B82F6" alt="Last Commit">
-            <img src="https://img.shields.io/badge/Dibuat%20dengan-HTML%2FJS-red?style=flat" alt="Made With HTML/JS">
-        </div>
 
-        <!-- Konten README ala Markdown -->
-        <article class="markdown-body">
-            
-            <!-- Deskripsi Singkat -->
-            <p class="text-lg text-slate-300">
-                **Project Argon** adalah kerangka kerja (framework) minimalis yang dirancang untuk memfasilitasi pembangunan portofolio web tunggal yang sangat cepat dan ringan. Fokus utamanya adalah pada kecepatan loading, responsivitas, dan kemudahan deployment (penyebaran). Ini adalah jawaban untuk kebutuhan dokumentasi yang ringkas dan efektif.
+        <!-- Konten Markdown -->
+        <article class="md-content">
+
+            <blockquote>
+                "Sederhana adalah kompleksitas yang diselesaikan. Proyek Aurora mewujudkan prinsip ini dengan menyediakan solusi portofolio yang ringkas dan sangat cepat."
+            </blockquote>
+
+            <!-- Daftar Isi Taktis -->
+            <h2 id="toc">Daftar Isi</h2>
+            <ul class="list-none space-y-0 text-blue-400">
+                <li><a href="#pendahuluan">1. Pendahuluan</a></li>
+                <li><a href="#fitur">2. Fitur Kunci</a></li>
+                <li><a href="#instalasi">3. Instalasi & Setup</a></li>
+                <li><a href="#konfigurasi">4. Konfigurasi Data</a></li>
+                <li><a href="#kontribusi">5. Kontribusi</a></li>
+            </ul>
+
+            <!-- Bagian 1: Pendahuluan -->
+            <h2 id="pendahuluan">1. Pendahuluan</h2>
+            <p>
+                Proyek Aurora adalah templat HTML/JavaScript satu file yang dirancang untuk kebutuhan portofolio ultra-ringan. Dengan meminimalkan dependensi, kami memastikan kecepatan loading yang optimal dan kemudahan penyebaran (deployment). Ini adalah solusi sempurna untuk menampilkan karya Anda dengan cepat dan elegan.
             </p>
 
-            <!-- Daftar Isi -->
-            <h2>Daftar Isi</h2>
+            <!-- Bagian 2: Fitur -->
+            <h2 id="fitur">2. Fitur Kunci ✨</h2>
             <ul>
-                <li><a href="#instalasi">Instalasi Cepat</a></li>
-                <li><a href="#fitur-unggul">Fitur Unggulan</a></li>
-                <li><a href="#penggunaan">Panduan Penggunaan</a></li>
-                <li><a href="#kontribusi">Kontribusi dan Dukungan</a></li>
+                <li>**Single-File Build**: Semua logika, styling, dan markup dalam satu berkas HTML.</li>
+                <li>**Zero Dependencies**: Hanya menggunakan Tailwind CSS CDN untuk styling modern.</li>
+                <li>**Local Storage Database**: Menyimpan komentar dan rating secara lokal tanpa perlu server backend.</li>
+                <li>**Desain Adaptif**: Sepenuhnya responsif, indah di perangkat mobile maupun desktop.</li>
             </ul>
 
-            <!-- Instalasi -->
-            <h2 id="instalasi">🚀 Instalasi Cepat</h2>
-            <p>Untuk menjalankan proyek ini secara lokal, ikuti langkah-langkah sederhana di bawah ini. Tidak diperlukan instalasi Node.js atau paket manager!</p>
-            
-            <h3>1. Kloning Repositori</h3>
-            <pre><code>git clone https://github.com/lanavyn/argon.git
-cd argon</code></pre>
+            <!-- Bagian 3: Instalasi & Setup -->
+            <h2 id="instalasi">3. Instalasi & Setup 🚀</h2>
+            <p>Sangat mudah! Tidak perlu <code>npm install</code> atau <code>yarn start</code>.</p>
+            <ol>
+                <li>Kloning repositori ini (atau salin isi file ini).</li>
+                <li>Buka file <code>index.html</code> di browser Anda.</li>
+                <li>Mulai modifikasi data di variabel <code class="text-green-400">PORTFOLIO_DATA</code> di bagian `<script>`.</li>
+            </ol>
 
-            <h3>2. Jalankan File</h3>
-            <p>Buka file <code>index.html</code> (atau <code>readme_web.html</code> ini) langsung di browser pilihan Anda (Chrome/Firefox). Selesai!</p>
+            <h3>Contoh Blok Kode Realistis (JavaScript)</h3>
+            <pre>
+<span class="comment">// Pastikan untuk mengganti data ini dengan informasi pribadi Anda</span>
+<span class="keyword">const</span> <span class="variable">PORTFOLIO_DATA</span> = {
+    <span class="variable">name</span>: <span class="string">"LanaVyn Official"</span>,
+    <span class="variable">age</span>: 15,
+    <span class="variable">region</span>: <span class="string">"Secret Java, Indonesia"</span>,
+};
 
-            <!-- Fitur Unggulan -->
-            <h2 id="fitur-unggul">✨ Fitur Unggulan</h2>
-            <ul class="list-disc">
-                <li>**Desain Single-File**: Semua kode (HTML, CSS, JS) berada dalam satu file untuk portabilitas maksimum.</li>
-                <li>**Full Responsive**: Tampilan optimal di semua ukuran perangkat (Mobile, Tablet, Desktop).</li>
-                <li>**Minimal Dependencies**: Hanya menggunakan Tailwind CSS CDN untuk styling.</li>
-                <li>**Skrip Ringan**: JavaScript murni yang fokus pada performa.</li>
-            </ul>
+<span class="keyword">function</span> calculateRating(comments) {
+    <span class="keyword">if</span> (comments.<span class="variable">length</span> === 0) {
+        <span class="keyword">return</span> 0;
+    }
+    <span class="comment">// Lakukan perhitungan rata-rata</span>
+    <span class="keyword">return</span> totalRating / comments.<span class="variable">length</span>;
+}</pre>
 
-            <!-- Penggunaan -->
-            <h2 id="penggunaan">🛠️ Panduan Penggunaan</h2>
-            
-            <h3>Struktur Data</h3>
-            <p>Semua data portofolio utama disimpan dalam objek JavaScript <code>PORTFOLIO_DATA</code> untuk kemudahan modifikasi. Anda hanya perlu mengedit bagian ini.</p>
-            <pre><code>const PORTFOLIO_DATA = {
-    name: "LanaVyn Official",
-    age: 15,
-    favoriteColor: "Blue",
-    // ... data lainnya
-};</code></pre>
+            <!-- Bagian 4: Konfigurasi Data -->
+            <h2 id="konfigurasi">4. Konfigurasi Data 🛠️</h2>
+            <p>Tabel di bawah menunjukkan lokasi data yang harus Anda edit:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Lokasi Data</th>
+                        <th>Variabel</th>
+                        <th>Tujuan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>&lt;script&gt; section</td>
+                        <td><code>PORTFOLIO_DATA</code></td>
+                        <td>Semua informasi kontak dan profil.</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;style&gt; section</td>
+                        <td><code>body</code> background</td>
+                        <td>Mengubah skema warna gelap ke terang.</td>
+                    </tr>
+                </tbody>
+            </table>
 
-            <h3>Kustomisasi Warna</h3>
-            <p>Untuk mengubah tema warna utama dari Biru ke Merah, cukup ganti semua instance <code>blue-400</code> menjadi <code>red-400</code> dalam tag <code>&lt;style&gt;</code> di bagian head.</p>
+            <!-- Bagian 5: Kontribusi -->
+            <h2 id="kontribusi">5. Kontribusi 🤝</h2>
+            <p>Jika Anda menemukan bug atau memiliki ide baru, kami sangat menghargai kontribusi Anda! Silakan buat *Issue* baru atau kirim *Pull Request* ke repositori.</p>
             
-            <!-- Kontribusi -->
-            <h2 id="kontribusi">🤝 Kontribusi dan Dukungan</h2>
-            <p>Kontribusi Anda sangat kami hargai! Jika Anda memiliki saran, laporkan <a href="#">issue</a>, atau kirimkan <a href="#">pull request</a>.</p>
-            
-            <p class="text-sm italic text-slate-500 mt-8">Dibuat dengan semangat oleh LanaVyn Official.</p>
-        </article>
-        
-        <!-- Footer / Lisensi -->
-        <footer class="text-center mt-12 pt-6 border-t border-slate-700/50">
-            <p class="text-xs text-slate-500">
-                &copy; 2025 Project Argon. Dirilis di bawah <a href="#" class="text-blue-400 hover:text-blue-300">Lisensi MIT</a>.
+            <p class="mt-8 text-center text-gray-500 text-sm">
+                &copy; 2025 LanaVyn Official. Seluruh Hak Cipta Dilindungi.
             </p>
-        </footer>
+
+        </article>
 
     </div>
 </body>
