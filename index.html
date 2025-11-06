@@ -3,384 +3,869 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portofolio LanaVyn Official (Anonym)</title>
-    <!-- Memuat Tailwind CSS untuk styling modern dan responsif -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Konfigurasi Font Inter -->
+    <title>Jalan Sufi Premium - Komunitas Filsafat dan Tasawuf</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        :root {
+            --primary-color: #8B4513;
+            --secondary-color: #DAA520;
+            --accent-color: #4A3520;
+            --light-color: #F5F5DC;
+            --dark-color: #2F1B0C;
+            --text-color: #333;
+            --light-text: #F5F5DC;
+            --success-color: #27ae60;
+            --premium-gold: #FFD700;
+            --premium-gradient: linear-gradient(135deg, #FFD700, #DAA520, #B8860B);
+            --font-heading: 'Georgia', serif;
+            --font-body: 'Arial', sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0d1117; /* Warna latar belakang gelap */
-            color: #c9d1d9; /* Warna teks terang */
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-color);
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" opacity="0.05"><path d="M20,20 L80,20 L80,80 L20,80 Z" fill="none" stroke="%234A3520" stroke-width="2"/></svg>');
         }
-        .card {
-            background-color: #161b22; /* Warna card lebih gelap */
-            border: 1px solid #30363d;
+        
+        /* Header */
+        header {
+            background: linear-gradient(rgba(47, 27, 12, 0.9), rgba(47, 27, 12, 0.8));
+            color: var(--light-text);
+            padding: 1.5rem 0;
+            position: relative;
+            overflow: hidden;
         }
-        .star-rating label {
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .logo span {
+            color: var(--secondary-color);
+        }
+        
+        .premium-badge {
+            background: var(--premium-gradient);
+            color: var(--dark-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-left: 1rem;
+        }
+        
+        .user-actions {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        /* Navigasi */
+        nav {
+            background-color: var(--accent-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin: 0;
+        }
+        
+        .nav-menu a {
+            display: block;
+            color: var(--light-text);
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            transition: background-color 0.3s;
+            font-weight: bold;
+        }
+        
+        .nav-menu a:hover {
+            background-color: var(--primary-color);
+        }
+        
+        .premium-indicator {
+            display: flex;
+            align-items: center;
+            color: var(--premium-gold);
+            font-weight: bold;
+            padding: 0 1.5rem;
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(139, 69, 19, 0.7), rgba(47, 27, 12, 0.8));
+            background-size: cover;
+            background-position: center;
+            color: var(--light-text);
+            padding: 4rem 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
             cursor: pointer;
-            transition: color 0.2s;
         }
-        .star-rating input:checked ~ label,
-        .star-rating label:hover,
-        .star-rating label:hover ~ label {
-            color: #FBBF24; /* Warna kuning untuk bintang */
+        
+        .btn:hover {
+            background-color: var(--light-text);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
-        /* Style untuk audio player kustom */
-        #audio-player {
+        
+        .btn-premium {
+            background: var(--premium-gradient);
+            color: var(--dark-color);
+            font-weight: bold;
+        }
+        
+        /* Membership Plans */
+        .membership-section {
+            margin: 3rem 0;
+        }
+        
+        .section-title {
+            font-family: var(--font-heading);
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--secondary-color);
+            text-align: center;
+            font-size: 2rem;
+        }
+        
+        .plans-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .plan-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            position: relative;
+        }
+        
+        .plan-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .plan-header {
+            padding: 1.5rem;
+            text-align: center;
+            color: white;
+        }
+        
+        .free .plan-header {
+            background-color: var(--accent-color);
+        }
+        
+        .premium .plan-header {
+            background: var(--premium-gradient);
+        }
+        
+        .plan-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-family: var(--font-heading);
+        }
+        
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        
+        .plan-period {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .plan-features {
+            padding: 1.5rem;
+        }
+        
+        .plan-features ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+        
+        .plan-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .plan-features li:before {
+            content: "✓";
+            color: var(--success-color);
+            margin-right: 0.5rem;
+            font-weight: bold;
+        }
+        
+        .plan-action {
+            padding: 0 1.5rem 1.5rem;
+            text-align: center;
+        }
+        
+        /* CAPTCHA Styles */
+        .captcha-container {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 1rem;
+            margin: 1rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .captcha-display {
+            font-family: 'Courier New', monospace;
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 3px;
+            background: #eee;
+            padding: 0.5rem 1rem;
+            border-radius: 3px;
+            margin-bottom: 1rem;
+            user-select: none;
+        }
+        
+        .captcha-input {
             width: 100%;
-            height: 40px;
-            background-color: #30363d;
-            border-radius: 8px;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+        
+        .captcha-controls {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        /* Form Styles */
+        .form-container {
+            max-width: 500px;
+            margin: 2rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        /* Payment Methods */
+        .payment-methods {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .payment-method {
+            flex: 1;
+            min-width: 100px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 0.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .payment-method:hover {
+            border-color: var(--primary-color);
+        }
+        
+        .payment-method.selected {
+            border-color: var(--secondary-color);
+            background-color: rgba(218, 165, 32, 0.1);
+        }
+        
+        .payment-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Premium Content */
+        .premium-content {
+            background: linear-gradient(135deg, #fff9e6, #fff0cc);
+            border: 2px solid var(--premium-gold);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .premium-content:before {
+            content: "PREMIUM";
+            position: absolute;
+            top: 10px;
+            right: -30px;
+            background: var(--premium-gradient);
+            color: var(--dark-color);
+            padding: 0.3rem 3rem;
+            transform: rotate(45deg);
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+        
+        .content-locked {
+            filter: blur(5px);
+            pointer-events: none;
+            position: relative;
+        }
+        
+        .locked-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            border-radius: 10px;
+        }
+        
+        .locked-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--premium-gold);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--light-text);
+            padding: 3rem 0 1rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-section h3 {
+            font-family: var(--font-heading);
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Responsif */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-menu {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .nav-menu li {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .plans-container {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
-<body class="p-4 sm:p-8">
-
-    <div id="app" class="max-w-4xl mx-auto">
-
-        <!-- Header dan Profil -->
-        <header class="text-center mb-8">
-            <h1 class="text-4xl sm:text-5xl font-extrabold text-[#5390e9] mb-2">LanaVyn Official</h1>
-            <p class="text-lg text-gray-400">Personal Portofolio | The Blue Rabbit</p>
-        </header>
-
-        <main class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10">
-
-            <!-- Kolom 1: Informasi Dasar -->
-            <div class="lg:col-span-1 card p-6 rounded-xl shadow-lg h-full">
-                <h2 class="text-2xl font-bold border-b border-gray-600 pb-2 mb-4 text-blue-400">Informasi Pribadi</h2>
-                <div id="profile-info" class="space-y-3">
-                    <!-- Data profil akan diisi oleh JavaScript -->
-                </div>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div>
+                <h1 class="logo">Jalan <span>Sufi</span> <span class="premium-badge">PREMIUM</span></h1>
+                <p class="tagline">Komunitas Eksklusif Filsafat dan Tasawuf</p>
             </div>
-
-            <!-- Kolom 2: Kontak dan Musik -->
-            <div class="lg:col-span-2 space-y-6">
-                <!-- Kontak -->
-                <div class="card p-6 rounded-xl shadow-lg">
-                    <h2 class="text-2xl font-bold border-b border-gray-600 pb-2 mb-4 text-blue-400">Kontak Saya</h2>
-                    <div id="contact-info" class="flex flex-wrap gap-4 text-sm sm:text-base">
-                        <!-- Data kontak akan diisi oleh JavaScript -->
-                    </div>
-                </div>
-
-                <!-- Musik Favorit -->
-                <div class="card p-6 rounded-xl shadow-lg">
-                    <h2 class="text-2xl font-bold border-b border-gray-600 pb-2 mb-4 text-blue-400">Musik Favorit</h2>
-                    <div id="favorite-song" class="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-6">
-                        <!-- Cover Album -->
-                        <div class="flex-shrink-0 w-full sm:w-32 h-32 rounded-lg overflow-hidden border border-gray-600">
-                            <img id="song-cover" src="https://files.catbox.moe/2dgtmh.jpeg" onerror="this.onerror=null; this.src='https://placehold.co/128x128/30363d/c9d1d9?text=COVER';" alt="Cover Album" class="w-full h-full object-cover">
-                        </div>
-                        
-                        <div class="flex-grow w-full">
-                            <p class="text-xl font-semibold text-white mb-2" id="song-title">A girl within my soul</p>
-                            <!-- Audio Player -->
-                            <audio id="audio-player" controls preload="auto">
-                                <source src="https://files.catbox.moe/gf3fiz.mp3" type="audio/mp3">
-                                Browser Anda tidak mendukung elemen audio.
-                            </audio>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Rating dan Komentar -->
-                <div class="card p-6 rounded-xl shadow-lg">
-                    <h2 class="text-2xl font-bold border-b border-gray-600 pb-2 mb-4 text-blue-400">Rating & Komentar</h2>
-                    
-                    <!-- Display Rating Rata-rata -->
-                    <div class="mb-4 flex items-center space-x-2">
-                        <span id="average-rating" class="text-4xl font-extrabold text-yellow-400">0.0</span>
-                        <span id="star-display" class="text-3xl text-yellow-400"></span>
-                        <span id="comment-count" class="text-gray-400 text-sm">(0 Komentar)</span>
-                    </div>
-
-                    <!-- Form Komentar -->
-                    <form id="comment-form" class="space-y-3 p-4 bg-gray-700/30 rounded-lg">
-                        <p class="font-medium text-gray-300">Berikan Komentar (Anonim) & Rating:</p>
-                        
-                        <!-- Input Rating Bintang -->
-                        <div class="flex items-center space-x-2">
-                            <label for="rating" class="text-gray-400">Nilai:</label>
-                            <div id="rating-input" class="star-rating flex flex-row-reverse justify-end text-3xl">
-                                <!-- Bintang di sini, menggunakan UTF-8 star symbol -->
-                                <input type="radio" id="star5" name="rating" value="5" class="hidden" required><label for="star5" class="text-gray-500 hover:text-yellow-400 transition-colors">★</label>
-                                <input type="radio" id="star4" name="rating" value="4" class="hidden"><label for="star4" class="text-gray-500 hover:text-yellow-400 transition-colors">★</label>
-                                <input type="radio" id="star3" name="rating" value="3" class="hidden"><label for="star3" class="text-gray-500 hover:text-yellow-400 transition-colors">★</label>
-                                <input type="radio" id="star2" name="rating" value="2" class="hidden"><label for="star2" class="text-gray-500 hover:text-yellow-400 transition-colors">★</label>
-                                <input type="radio" id="star1" name="rating" value="1" class="hidden"><label for="star1" class="text-gray-500 hover:text-yellow-400 transition-colors">★</label>
-                            </div>
-                        </div>
-
-                        <!-- Input Komentar -->
-                        <textarea id="comment-text" rows="3" class="w-full p-2 rounded bg-[#0d1117] border border-gray-600 focus:border-blue-500 focus:ring focus:ring-blue-500/50" placeholder="Tulis komentar Anda di sini... (Anonim)"></textarea>
-                        
-                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-lg transition duration-200">Kirim Komentar</button>
-                    </form>
-
-                    <!-- Daftar Komentar -->
-                    <div class="mt-6">
-                        <h3 class="text-xl font-semibold mb-3 text-blue-300">Komentar Pengunjung</h3>
-                        <div id="comments-list" class="space-y-4">
-                            <!-- Komentar akan diisi oleh JavaScript -->
-                            <p class="text-gray-500 italic" id="no-comments">Belum ada komentar. Jadilah yang pertama!</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="user-actions">
+                <button class="btn" id="loginBtn">Masuk</button>
+                <button class="btn btn-premium" id="registerBtn">Daftar Premium</button>
             </div>
-
-        </main>
-
-        <!-- Pesan Notifikasi (untuk pengganti alert) -->
-        <div id="notification-box" class="fixed bottom-4 right-4 bg-green-500 text-white p-3 rounded-lg shadow-xl hidden transition-opacity duration-300" style="opacity: 0;">
-            Komentar berhasil ditambahkan!
         </div>
+    </header>
 
+    <!-- Navigasi -->
+    <nav>
+        <div class="nav-container">
+            <ul class="nav-menu">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#content">Konten Premium</a></li>
+                <li><a href="#courses">Kursus Online</a></li>
+                <li><a href="#community">Komunitas</a></li>
+                <li><a href="#about">Tentang</a></li>
+            </ul>
+            <div class="premium-indicator">
+                <i class="fas fa-crown"></i>
+                <span>Area Member Premium</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Konten Utama -->
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <h1>Komunitas Eksklusif Filsafat & Tasawuf</h1>
+            <p>Akses konten premium, kursus online, dan komunitas diskusi dengan ahli filsafat dan tasawuf. Bergabunglah dengan ribuan pencari makna kehidupan.</p>
+            <button class="btn btn-premium" id="joinPremium">Gabung Sekarang</button>
+        </section>
+
+        <!-- Membership Plans -->
+        <section class="membership-section">
+            <h2 class="section-title">Pilihan Keanggotaan</h2>
+            <div class="plans-container">
+                <!-- Free Plan -->
+                <div class="plan-card free">
+                    <div class="plan-header">
+                        <h3 class="plan-name">Gratis</h3>
+                        <div class="plan-price">Rp 0</div>
+                        <div class="plan-period">Selamanya</div>
+                    </div>
+                    <div class="plan-features">
+                        <ul>
+                            <li>Akses terbatas ke artikel dasar</li>
+                            <li>1 kursus pengantar gratis</li>
+                            <li>Komunitas diskusi terbatas</li>
+                            <li>Iklan ditampilkan</li>
+                        </ul>
+                    </div>
+                    <div class="plan-action">
+                        <button class="btn" data-plan="free">Pilih Paket</button>
+                    </div>
+                </div>
+                
+                <!-- Premium Plan -->
+                <div class="plan-card premium">
+                    <div class="plan-header">
+                        <h3 class="plan-name">Premium</h3>
+                        <div class="plan-price">Rp 99.000</div>
+                        <div class="plan-period">per bulan</div>
+                    </div>
+                    <div class="plan-features">
+                        <ul>
+                            <li>Akses penuh ke semua konten premium</li>
+                            <li>10+ kursus online lengkap</li>
+                            <li>Komunitas diskusi eksklusif</li>
+                            <li>Konsultasi dengan ahli</li>
+                            <li>Bebas iklan</li>
+                            <li>Download materi offline</li>
+                            <li>Webinar bulanan</li>
+                        </ul>
+                    </div>
+                    <div class="plan-action">
+                        <button class="btn btn-premium" data-plan="premium">Pilih Paket</button>
+                    </div>
+                </div>
+                
+                <!-- Annual Plan -->
+                <div class="plan-card premium">
+                    <div class="plan-header">
+                        <h3 class="plan-name">Premium Tahunan</h3>
+                        <div class="plan-price">Rp 899.000</div>
+                        <div class="plan-period">per tahun</div>
+                    </div>
+                    <div class="plan-features">
+                        <ul>
+                            <li>Semua fitur Premium</li>
+                            <li>Hemat 25% dibanding bulanan</li>
+                            <li>Konsultasi prioritas</li>
+                            <li>Event khusus member tahunan</li>
+                            <li>Sertifikat keanggotaan</li>
+                            <li>Buku digital eksklusif</li>
+                        </ul>
+                    </div>
+                    <div class="plan-action">
+                        <button class="btn btn-premium" data-plan="annual">Pilih Paket</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Premium Content Preview -->
+        <section id="content">
+            <h2 class="section-title">Konten Premium Eksklusif</h2>
+            
+            <!-- Free Content -->
+            <div class="premium-content">
+                <h3>Pengantar Filsafat Rumi</h3>
+                <p>Pemahaman dasar tentang ajaran Jalaludin Rumi dan konsep cinta ilahi dalam tasawuf. Cocok untuk pemula yang ingin mengenal pemikiran Rumi.</p>
+                <button class="btn">Akses Gratis</button>
+            </div>
+            
+            <!-- Premium Content (Locked) -->
+            <div class="premium-content content-locked">
+                <div class="locked-overlay">
+                    <div class="locked-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Konten Terkunci</h3>
+                    <p>Upgrade ke keanggotaan premium untuk mengakses konten eksklusif ini</p>
+                    <button class="btn btn-premium" id="upgradeBtn">Upgrade Sekarang</button>
+                </div>
+                <h3>Analisis Mendalam: Masnawi Rumi</h3>
+                <p>Penjelasan mendalam tentang kitab Masnawi, makna simbolik, dan implementasinya dalam kehidupan modern. Dilengkapi dengan studi kasus dan diskusi interaktif.</p>
+            </div>
+            
+            <!-- Another Premium Content (Locked) -->
+            <div class="premium-content content-locked">
+                <div class="locked-overlay">
+                    <div class="locked-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Konten Terkunci</h3>
+                    <p>Upgrade ke keanggotaan premium untuk mengakses konten eksklusif ini</p>
+                    <button class="btn btn-premium" id="upgradeBtn2">Upgrade Sekarang</button>
+                </div>
+                <h3>Meditasi Sufi dan Tarian Darwis</h3>
+                <p>Panduan lengkap praktik meditasi sufi dan makna spiritual di balik tarian darwis. Video tutorial dan sesi latihan langsung dengan instruktur ahli.</p>
+            </div>
+        </section>
+
+        <!-- Registration Form (Hidden by Default) -->
+        <div class="form-container" id="registrationForm" style="display: none;">
+            <h2>Daftar Keanggotaan Premium</h2>
+            <form id="premiumForm">
+                <div class="form-group">
+                    <label for="name">Nama Lengkap</label>
+                    <input type="text" id="name" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Kata Sandi</label>
+                    <input type="password" id="password" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="plan">Pilih Paket</label>
+                    <select id="plan" class="form-control" required>
+                        <option value="">-- Pilih Paket --</option>
+                        <option value="premium">Premium Bulanan - Rp 99.000</option>
+                        <option value="annual">Premium Tahunan - Rp 899.000</option>
+                    </select>
+                </div>
+                
+                <!-- CAPTCHA -->
+                <div class="captcha-container">
+                    <div class="captcha-display" id="captchaText">A1B2C3</div>
+                    <input type="text" class="captcha-input" id="captchaInput" placeholder="Masukkan kode di atas" required>
+                    <div class="captcha-controls">
+                        <button type="button" class="btn" id="refreshCaptcha">
+                            <i class="fas fa-redo"></i> Refresh
+                        </button>
+                        <button type="button" class="btn" id="audioCaptcha">
+                            <i class="fas fa-volume-up"></i> Audio
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Payment Methods -->
+                <div class="form-group">
+                    <label>Metode Pembayaran</label>
+                    <div class="payment-methods">
+                        <div class="payment-method selected" data-method="credit">
+                            <div class="payment-icon">
+                                <i class="far fa-credit-card"></i>
+                            </div>
+                            <div>Kartu Kredit</div>
+                        </div>
+                        <div class="payment-method" data-method="bank">
+                            <div class="payment-icon">
+                                <i class="fas fa-university"></i>
+                            </div>
+                            <div>Transfer Bank</div>
+                        </div>
+                        <div class="payment-method" data-method="ewallet">
+                            <div class="payment-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div>E-Wallet</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <button type="submit" class="btn btn-premium" style="width: 100%;">Daftar Sekarang</button>
+                </div>
+                
+                <div class="form-group" style="text-align: center;">
+                    <p>Dengan mendaftar, Anda menyetujui <a href="#">Syarat & Ketentuan</a> dan <a href="#">Kebijakan Privasi</a> kami.</p>
+                </div>
+            </form>
+        </div>
     </div>
 
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Tentang Jalan Sufi Premium</h3>
+                <p>Platform eksklusif untuk mendalami filsafat dan tasawuf dengan panduan ahli dan komunitas yang mendukung.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Kontak</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-envelope"></i> support@jalansufi.com</li>
+                    <li><i class="fas fa-phone"></i> +62 21 1234 5678</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Jakarta, Indonesia</li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Link Cepat</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Syarat & Ketentuan</a></li>
+                    <li><a href="#">Kebijakan Privasi</a></li>
+                    <li><a href="#">Bantuan & FAQ</a></li>
+                    <li><a href="#">Karier</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 Jalan Sufi Premium. Seluruh hak cipta dilindungi.</p>
+        </div>
+    </footer>
+
     <script>
-        // Data Statis Portofolio (Data Anda)
-        const PORTFOLIO_DATA = {
-            name: "LanaVyn Official (Anonym)",
-            age: 15,
-            gender: "Man",
-            region: "Secret Java, Indonesia",
-            favoriteColor: "Blue",
-            favoriteNumber: 7,
-            zodiak: "Cancer",
-            shio: "Kelinci",
-            
-            contact: [
-                { type: "Tiktok", link: "https://www.tiktok.com/@istimewasekali.viewone?_r=1&_t=ZS-917NAa8teXh", icon: "📱", color: "text-pink-400" },
-                { type: "Telegram", link: "https://t.me/LanaVynOfficial", icon: "✈️", color: "text-blue-400" },
-                { type: "Whatsapp", link: "https://wa.me/601161004161", text: "+60 11-6100-4161", icon: "💬", color: "text-green-400" }
-            ],
-        };
-
-        // Kunci untuk menyimpan data di localStorage
-        const STORAGE_KEY = 'lanavyn_portfolio_comments';
-
-        /**
-         * Mengambil data komentar dan rating dari localStorage.
-         * Jika belum ada, menginisialisasi dengan array kosong.
-         * @returns {Array<Object>} Daftar komentar yang tersimpan.
-         */
-        function getComments() {
-            try {
-                const storedData = localStorage.getItem(STORAGE_KEY);
-                return storedData ? JSON.parse(storedData) : [];
-            } catch (e) {
-                console.error("Gagal mengambil data dari localStorage:", e);
-                return []; // Mengembalikan array kosong jika gagal
+        // Generate CAPTCHA
+        function generateCaptcha() {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            let captcha = '';
+            for (let i = 0; i < 6; i++) {
+                captcha += chars.charAt(Math.floor(Math.random() * chars.length));
             }
+            document.getElementById('captchaText').textContent = captcha;
+            return captcha;
         }
-
-        /**
-         * Menyimpan array komentar baru ke localStorage.
-         * @param {Array<Object>} comments - Array komentar yang akan disimpan.
-         */
-        function saveComments(comments) {
-            try {
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(comments));
-            } catch (e) {
-                console.error("Gagal menyimpan data ke localStorage:", e);
-                // Menampilkan notifikasi error kustom (bukan alert)
-                showNotification("Gagal menyimpan data! Mungkin penyimpanan browser penuh.", 'bg-red-500');
-            }
-        }
-
-        /**
-         * Menghitung rata-rata rating dan memperbarui UI.
-         * @param {Array<Object>} comments - Daftar komentar.
-         */
-        function updateRatingDisplay(comments) {
-            const totalComments = comments.length;
-            const avgRatingEl = document.getElementById('average-rating');
-            const starDisplayEl = document.getElementById('star-display');
-            const commentCountEl = document.getElementById('comment-count');
-
-            if (totalComments === 0) {
-                avgRatingEl.textContent = '0.0';
-                starDisplayEl.textContent = '☆☆☆☆☆';
-                commentCountEl.textContent = '(0 Komentar)';
-                return;
-            }
-
-            // Menghitung total rating
-            const totalRating = comments.reduce((sum, comment) => sum + parseInt(comment.rating), 0);
-            const average = (totalRating / totalComments).toFixed(1);
-
-            avgRatingEl.textContent = average;
-            commentCountEl.textContent = `(${totalComments} Komentar)`;
-
-            // Menampilkan bintang penuh (★) dan kosong (☆) berdasarkan rata-rata
-            const fullStars = Math.floor(average);
-            const emptyStars = 5 - fullStars;
-            let starString = '★'.repeat(fullStars) + '☆'.repeat(emptyStars);
-            starDisplayEl.textContent = starString;
-        }
-
-        /**
-         * Merender daftar komentar dan memperbarui UI.
-         */
-        function renderComments() {
-            const comments = getComments();
-            const listEl = document.getElementById('comments-list');
-            const noCommentsEl = document.getElementById('no-comments');
-            listEl.innerHTML = ''; // Bersihkan daftar
-
-            if (comments.length === 0) {
-                noCommentsEl.classList.remove('hidden');
-            } else {
-                noCommentsEl.classList.add('hidden');
-                
-                // Urutkan dari yang terbaru (opsional)
-                comments.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-
-                comments.forEach(comment => {
-                    const commentDiv = document.createElement('div');
-                    commentDiv.className = 'p-3 rounded-lg border border-gray-700/50 bg-gray-700/20';
-
-                    // Rating bintang
-                    const stars = '★'.repeat(comment.rating) + '☆'.repeat(5 - comment.rating);
-                    
-                    // Format tanggal dan waktu
-                    const date = new Date(comment.timestamp).toLocaleString('id-ID', { 
-                        year: 'numeric', month: 'short', day: 'numeric', 
-                        hour: '2-digit', minute: '2-digit'
-                    });
-
-                    commentDiv.innerHTML = `
-                        <div class="flex justify-between items-center mb-1">
-                            <span class="font-bold text-sm text-yellow-400">${stars}</span>
-                            <span class="text-xs text-gray-500">${date}</span>
-                        </div>
-                        <p class="text-sm text-gray-300">${comment.text}</p>
-                        <p class="text-xs italic text-gray-500 mt-1">- Anonim</p>
-                    `;
-                    listEl.appendChild(commentDiv);
+        
+        let currentCaptcha = generateCaptcha();
+        
+        // Refresh CAPTCHA
+        document.getElementById('refreshCaptcha').addEventListener('click', function() {
+            currentCaptcha = generateCaptcha();
+        });
+        
+        // Audio CAPTCHA (simulasi)
+        document.getElementById('audioCaptcha').addEventListener('click', function() {
+            alert('Fitur audio CAPTCHA akan diaktifkan dalam versi premium');
+        });
+        
+        // Payment method selection
+        document.querySelectorAll('.payment-method').forEach(method => {
+            method.addEventListener('click', function() {
+                document.querySelectorAll('.payment-method').forEach(m => {
+                    m.classList.remove('selected');
                 });
-            }
-
-            updateRatingDisplay(comments);
-        }
-
-        /**
-         * Menangani submit form komentar.
-         * @param {Event} e - Event submit.
-         */
-        function handleCommentSubmit(e) {
+                this.classList.add('selected');
+            });
+        });
+        
+        // Show registration form
+        document.getElementById('registerBtn').addEventListener('click', function() {
+            document.getElementById('registrationForm').style.display = 'block';
+            window.scrollTo({
+                top: document.getElementById('registrationForm').offsetTop - 100,
+                behavior: 'smooth'
+            });
+        });
+        
+        document.getElementById('joinPremium').addEventListener('click', function() {
+            document.getElementById('registrationForm').style.display = 'block';
+            window.scrollTo({
+                top: document.getElementById('registrationForm').offsetTop - 100,
+                behavior: 'smooth'
+            });
+        });
+        
+        document.querySelectorAll('#upgradeBtn, #upgradeBtn2').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.getElementById('registrationForm').style.display = 'block';
+                window.scrollTo({
+                    top: document.getElementById('registrationForm').offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Plan selection
+        document.querySelectorAll('[data-plan]').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const plan = this.getAttribute('data-plan');
+                document.getElementById('registrationForm').style.display = 'block';
+                
+                if (plan === 'premium') {
+                    document.getElementById('plan').value = 'premium';
+                } else if (plan === 'annual') {
+                    document.getElementById('plan').value = 'annual';
+                }
+                
+                window.scrollTo({
+                    top: document.getElementById('registrationForm').offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Form submission
+        document.getElementById('premiumForm').addEventListener('submit', function(e) {
             e.preventDefault();
-
-            const textInput = document.getElementById('comment-text');
-            const ratingInput = document.querySelector('input[name="rating"]:checked');
-
-            const text = textInput.value.trim();
-            const rating = ratingInput ? parseInt(ratingInput.value) : null;
-
-            if (text === "" || rating === null) {
-                showNotification("Mohon isi komentar dan berikan rating (bintang)!", 'bg-yellow-500');
+            
+            // Validate CAPTCHA
+            const userInput = document.getElementById('captchaInput').value;
+            if (userInput !== currentCaptcha) {
+                alert('Kode CAPTCHA tidak sesuai! Silakan coba lagi.');
+                currentCaptcha = generateCaptcha();
                 return;
             }
-
-            const newComment = {
-                text: text,
-                rating: rating,
-                timestamp: new Date().toISOString()
-            };
-
-            const comments = getComments();
-            comments.push(newComment);
-            saveComments(comments);
-
-            // Bersihkan form
-            textInput.value = '';
-            if (ratingInput) ratingInput.checked = false;
-
-            // Perbarui tampilan
-            renderComments();
-            showNotification("Komentar berhasil ditambahkan!", 'bg-green-500');
-        }
-
-        /**
-         * Menampilkan notifikasi kustom (pengganti alert).
-         * @param {string} message - Pesan notifikasi.
-         * @param {string} bgColorClass - Kelas warna latar belakang Tailwind.
-         */
-        function showNotification(message, bgColorClass = 'bg-green-500') {
-            const box = document.getElementById('notification-box');
-            box.textContent = message;
             
-            // Atur warna
-            box.className = box.className.replace(/bg-\w+-\d+/g, bgColorClass);
-
-            box.classList.remove('hidden');
-            setTimeout(() => box.style.opacity = 1, 10); // Mulai transisi
+            // Simulate form processing
+            alert('Pendaftaran berhasil! Anda akan diarahkan ke halaman pembayaran.');
             
-            setTimeout(() => {
-                box.style.opacity = 0; // Mulai transisi menghilang
-                setTimeout(() => box.classList.add('hidden'), 300); // Sembunyikan setelah transisi
-            }, 3000);
-        }
-
-        /**
-         * Inisialisasi data profil.
-         */
-        function renderProfileInfo() {
-            const infoEl = document.getElementById('profile-info');
-            const contactEl = document.getElementById('contact-info');
-            
-            // Data Profil
-            const profileItems = [
-                { label: "Nama", value: PORTFOLIO_DATA.name },
-                { label: "Umur", value: PORTFOLIO_DATA.age },
-                { label: "Gender", value: PORTFOLIO_DATA.gender },
-                { label: "Wilayah", value: PORTFOLIO_DATA.region },
-                { label: "Warna Favorit", value: PORTFOLIO_DATA.favoriteColor },
-                { label: "Angka Favorit", value: PORTFOLIO_DATA.favoriteNumber },
-                { label: "Zodiak", value: PORTFOLIO_DATA.zodiak },
-                { label: "Shio", value: PORTFOLIO_DATA.shio },
-            ];
-
-            infoEl.innerHTML = profileItems.map(item => `
-                <p class="text-sm">
-                    <span class="font-semibold text-gray-300">${item.label}:</span> 
-                    <span class="text-gray-400">${item.value}</span>
-                </p>
-            `).join('');
-
-            // Data Kontak
-            contactEl.innerHTML = PORTFOLIO_DATA.contact.map(item => {
-                const display = item.text || item.link.replace(/^https?:\/\//, '').replace(/^t\.me\//, '');
-                return `
-                    <a href="${item.link}" target="_blank" class="flex items-center space-x-2 p-2 rounded-lg card hover:bg-gray-700/40 transition">
-                        <span class="text-lg ${item.color}">${item.icon}</span>
-                        <span class="text-white font-medium">${item.type}</span>
-                        <span class="text-xs text-gray-400 truncate max-w-[150px] sm:max-w-none">${display}</span>
-                    </a>
-                `;
-            }).join('');
-        }
-
-        // --- Inisialisasi Saat Dokumen Dimuat ---
-        window.onload = function() {
-            // 1. Render data statis
-            renderProfileInfo();
-            
-            // 2. Muat dan tampilkan komentar/rating dari localStorage
-            renderComments();
-
-            // 3. Tambahkan event listener ke form
-            const form = document.getElementById('comment-form');
-            form.addEventListener('submit', handleCommentSubmit);
-            
-            // 4. Tambahkan sedikit styling ke audio player default (jika diperlukan)
-            const audioPlayer = document.getElementById('audio-player');
-            audioPlayer.className = 'w-full rounded-lg bg-gray-700/50';
-        };
-
+            // In a real application, you would submit the form to a server here
+            // and redirect to payment gateway
+        });
+        
+        // Login button
+        document.getElementById('loginBtn').addEventListener('click', function() {
+            alert('Fitur login akan diimplementasikan dalam versi lengkap');
+        });
     </script>
 </body>
 </html>
