@@ -14,7 +14,6 @@
     <style>
         /* CSS Kustom */
         body {
-            /* Latar belakang utama */
             background-image: url('https://feeldreams.github.io/wp11.jpg');
             background-size: cover;
             background-position: center;
@@ -22,40 +21,28 @@
             font-family: 'Inter', sans-serif;
             overflow: hidden; /* Mencegah scroll saat modal aktif */
         }
-
-        /* Menggunakan font kustom untuk judul */
         .font-display {
             font-family: 'Fredoka One', cursive;
         }
-
-        /* Efek bayangan teks agar mudah dibaca di atas background */
         .shadow-text {
             text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
         }
-
-        /* Animasi sederhana */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
         .animate-fade-in {
             animation: fadeIn 0.5s ease-out forwards;
         }
-
-        /* Style untuk sel minigame */
         .game-cell {
             transition: all 0.2s ease;
         }
         .game-cell:hover {
             transform: scale(1.05);
         }
-
-        /* Style untuk "mole" (gambar cilukba) */
         .mole {
             animation: popUp 0.3s ease;
         }
-
         @keyframes popUp {
             from { transform: scale(0.5); opacity: 0; }
             to { transform: scale(1); opacity: 1; }
@@ -64,26 +51,19 @@
 </head>
 <body class="text-gray-800">
 
-    <!-- Musik Latar (Autoplay) -->
+    <!-- Musik Latar (TANPA AUTOPLAY DI HTML) -->
     <audio id="bgMusic" src="https://files.catbox.moe/7czehh.mp3" loop></audio>
 
     <!-- 
       LAYAR 1: MODAL NAMA PENGGUNA
-      Modal ini akan muncul pertama kali, meminta nama pengguna.
     -->
     <div id="nameModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4">
         <div class="bg-white bg-opacity-90 backdrop-blur-sm p-8 rounded-2xl shadow-2xl text-center w-full max-w-md animate-fade-in">
-            <!-- Stiker Panda Panah -->
             <img src="https://feeldreams.github.io/pandapanah.gif" alt="Panda lucu" class="w-32 h-32 mx-auto mb-4 rounded-full shadow-lg">
-            
             <h2 class="text-3xl font-display text-pink-600 mb-2">Halo, Kamu!</h2>
             <p class="text-lg mb-4">Sebelum kita mulai seru-seruan, boleh tulis nama panggilanmu dulu?</p>
-            
             <input type="text" id="nameInput" class="w-full px-4 py-3 border-2 border-pink-300 rounded-xl text-lg text-center focus:outline-none focus:ring-2 focus:ring-pink-500" placeholder="Tulis namamu di sini...">
-            
-            <!-- Pesan Error (jika nama kosong) -->
             <p id="nameError" class="text-red-500 text-sm mt-2 hidden">Nama nggak boleh kosong ya!</p>
-            
             <button id="startButton" class="w-full mt-4 bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-6 rounded-xl text-lg transition-all transform hover:scale-105 shadow-lg">
                 Lanjut!
             </button>
@@ -92,7 +72,6 @@
 
     <!-- 
       LAYAR 2: KONTEN UTAMA
-      Akan muncul setelah pengguna memasukkan nama.
     -->
     <div id="mainContent" class="hidden min-h-screen w-full p-4 md:p-8 flex flex-col items-center justify-center space-y-6 overflow-y-auto">
         
@@ -125,7 +104,6 @@
                 </button>
             </div>
             
-            <!-- Area Grid Game -->
             <div id="gameGrid" class="grid grid-cols-3 gap-3 p-2 bg-purple-100 rounded-lg">
                 <!-- Sel game akan dibuat oleh JavaScript -->
             </div>
@@ -135,17 +113,11 @@
 
     <!-- 
       LAYAR 3: MODAL REWARD
-      Akan muncul saat tombol "Reward" diklik.
     -->
     <div id="rewardModal" class="hidden fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-40 p-4">
         <div class="bg-white bg-opacity-90 backdrop-blur-sm p-8 rounded-2xl shadow-2xl text-center w-full max-w-md animate-fade-in relative">
-            
-            <!-- Tombol Close -->
             <button id="closeRewardButton" class="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-3xl font-bold">&times;</button>
-            
-            <!-- Stiker Emawh -->
             <img src="https://feeldreams.github.io/emawh.gif" alt="Stiker peluk" class="w-40 h-40 mx-auto mb-4 rounded-lg">
-            
             <h2 class="text-3xl font-display text-teal-600 mb-2">TADAAAAA!</h2>
             <p class="text-lg mb-4">
                 Ini dia <i>virtual hug</i> dan suntikan semangat spesial buat 
@@ -154,6 +126,22 @@
             </p>
         </div>
     </div>
+
+    <!-- 
+      TOMBOL MUTE/UNMUTE MUSIK (BARU)
+    -->
+    <button id="muteButton" class="hidden fixed bottom-4 right-4 bg-white bg-opacity-80 p-3 rounded-full shadow-lg z-50 transition-all transform hover:scale-110">
+        <!-- Ikon Unmuted (Suara Aktif) -->
+        <svg id="iconUnmuted" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-pink-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .89-1.077 1.337-1.707.707L5.586 15z" />
+        </svg>
+        <!-- Ikon Muted (Suara Mati) -->
+        <svg id="iconMuted" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .89-1.077 1.337-1.707.707L5.586 15z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l-5-5m0 5l5-5" />
+        </svg>
+    </button>
+
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -172,6 +160,12 @@
             
             const bgMusic = document.getElementById('bgMusic');
             
+            // Variabel Musik (BARU)
+            const muteButton = document.getElementById('muteButton');
+            const iconUnmuted = document.getElementById('iconUnmuted');
+            const iconMuted = document.getElementById('iconMuted');
+            let isMuted = true; // Asumsi awal di-mute
+            
             // Variabel Game
             const startGameButton = document.getElementById('startGameButton');
             const gameGrid = document.getElementById('gameGrid');
@@ -179,7 +173,7 @@
             let score = 0;
             let gameActive = false;
             let gameTimer;
-            let gameCells = []; // Akan diisi saat game dimulai
+            let gameCells = [];
 
             // --- Logika Halaman Utama ---
 
@@ -188,24 +182,36 @@
                 const userName = nameInput.value.trim();
                 
                 if (userName === "") {
-                    // Tampilkan error jika nama kosong
                     nameError.classList.remove('hidden');
                 } else {
-                    // Nama valid, lanjutkan
                     nameError.classList.add('hidden');
-                    
-                    // Set nama pengguna di semua tempat
                     userNameDisplays.forEach(span => {
                         span.textContent = userName;
                     });
                     
-                    // Sembunyikan modal nama, tampilkan konten utama
                     nameModal.classList.add('hidden');
                     mainContent.classList.remove('hidden');
-                    document.body.style.overflow = 'auto'; // Izinkan scroll lagi
+                    document.body.style.overflow = 'auto';
                     
-                    // Putar musik (setelah interaksi pengguna)
-                    bgMusic.play().catch(e => console.warn("Pemutaran musik otomatis mungkin diblokir oleh browser."));
+                    // Tampilkan tombol mute (BARU)
+                    muteButton.classList.remove('hidden');
+                    
+                    // Coba putar musik (BARU)
+                    bgMusic.play().then(() => {
+                        // Berhasil! Set status jadi tidak di-mute
+                        isMuted = false;
+                        bgMusic.muted = false;
+                        updateMuteIcon();
+                    }).catch(e => {
+                        // Gagal (autoplay diblokir). 
+                        // Biarkan status 'isMuted = true', tapi set 'muted' di audio
+                        console.warn("Autoplay ditolak. Musik dimulai dalam keadaan Mute.", e);
+                        isMuted = true;
+                        bgMusic.muted = true;
+                        updateMuteIcon();
+                        // Kita tetap coba mainkan dalam keadaan mute, agar tombol toggle berfungsi
+                        bgMusic.play().catch(e => {}); 
+                    });
                 }
             });
 
@@ -218,86 +224,90 @@
                 rewardModal.classList.add('hidden');
             });
 
+            // 3. Logika Tombol Mute/Unmute (BARU)
+            muteButton.addEventListener('click', toggleMusic);
+
+            function toggleMusic() {
+                isMuted = !isMuted;
+                bgMusic.muted = isMuted;
+                
+                // Jika musik dijeda (misal krn pindah tab), coba mainkan lagi
+                if (!isMuted && bgMusic.paused) {
+                    bgMusic.play().catch(e => console.warn("Gagal memutar musik saat unmute.", e));
+                }
+                
+                updateMuteIcon();
+            }
+
+            function updateMuteIcon() {
+                if (isMuted) {
+                    iconUnmuted.classList.add('hidden');
+                    iconMuted.classList.remove('hidden');
+                } else {
+                    iconUnmuted.classList.remove('hidden');
+                    iconMuted.classList.add('hidden');
+                }
+            }
+
             // --- Logika Minigame "Cilukba" ---
 
-            // 3. Tombol Mulai Game
+            // 4. Tombol Mulai Game
             startGameButton.addEventListener('click', startGame);
 
             function startGame() {
-                if (gameActive) return; // Mencegah game dimulai berkali-kali
-
+                if (gameActive) return;
                 gameActive = true;
                 score = 0;
                 gameScore.textContent = score;
                 startGameButton.disabled = true;
                 startGameButton.textContent = "Tunggu...";
-
-                // Buat ulang grid
                 resetGrid();
-
-                // Mulai timer untuk memunculkan "mole"
-                gameTimer = setInterval(popMole, 900); // Muncul setiap 0.9 detik
-
-                // Atur timer untuk mengakhiri game (misal: 15 detik)
+                gameTimer = setInterval(popMole, 900);
                 setTimeout(endGame, 15000);
             }
             
-            // 4. Buat/Reset Grid Game
+            // 5. Buat/Reset Grid Game
             function resetGrid() {
-                gameGrid.innerHTML = ''; // Kosongkan grid
-                gameCells = []; // Kosongkan array sel
-                
+                gameGrid.innerHTML = '';
+                gameCells = []; 
                 for (let i = 0; i < 9; i++) {
                     const cell = document.createElement('div');
                     cell.className = "game-cell h-24 w-full bg-purple-200 rounded-lg cursor-pointer hover:bg-purple-300";
-                    cell.addEventListener('click', whack); // Tambahkan listener klik
+                    cell.addEventListener('click', whack);
                     gameGrid.appendChild(cell);
                     gameCells.push(cell);
                 }
             }
 
-            // 5. Logika Memukul "Mole" (Klik Sel)
+            // 6. Logika Memukul "Mole" (Klik Sel)
             function whack(e) {
-                // Cek apakah yang diklik adalah sel yang benar (punya class 'mole')
                 if (!gameActive || !e.target.classList.contains('mole')) {
-                    return; // Abaikan jika game tidak aktif atau klik meleset
+                    return;
                 }
-                
                 score++;
                 gameScore.textContent = score;
-                
-                // Hapus "mole" segera setelah diklik
                 e.target.classList.remove('mole');
                 e.target.innerHTML = '';
             }
 
-            // 6. Logika Memunculkan "Mole"
+            // 7. Logika Memunculkan "Mole"
             function popMole() {
-                // Hapus mole yang lama (jika ada)
                 const currentMole = document.querySelector('.mole');
                 if (currentMole) {
                     currentMole.classList.remove('mole');
                     currentMole.innerHTML = '';
                 }
-
-                // Pilih sel acak untuk mole baru
                 const randomCell = gameCells[Math.floor(Math.random() * gameCells.length)];
                 randomCell.classList.add('mole');
-                
-                // Tampilkan stiker cilukba
-                // pointer-events-none agar klik tetap terdeteksi di div, bukan di gambar
                 randomCell.innerHTML = `<img src="https://feeldreams.github.io/cilukba.gif" class="w-full h-full object-cover rounded-lg pointer-events-none" alt="Cilukba">`;
             }
 
-            // 7. Logika Mengakhiri Game
+            // 8. Logika Mengakhiri Game
             function endGame() {
                 gameActive = false;
-                clearInterval(gameTimer); // Hentikan timer pemuncul mole
-                
+                clearInterval(gameTimer);
                 startGameButton.disabled = false;
                 startGameButton.textContent = "Mulai Main Lagi!";
-                
-                // Tampilkan skor akhir di area grid
                 gameGrid.innerHTML = `
                     <div class="col-span-3 text-center p-10 text-2xl font-display text-purple-800">
                         Game Selesai!
