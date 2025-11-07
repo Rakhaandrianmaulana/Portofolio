@@ -405,11 +405,23 @@
                         span.textContent = userName;
                     });
                     
+                    // --- INI PERBAIKANNYA ---
+                    // Secara eksplisit sembunyikan semua modal
+                    document.querySelectorAll('.modal').forEach(modal => {
+                        modal.style.display = 'none';
+                    });
+                    
                     nameModal.style.display = 'none'; // Sembunyikan modal nama
                     mainContent.classList.remove('hidden'); // Tampilkan konten utama
                     navBar.classList.remove('hidden'); // Tampilkan navigasi
                     document.body.style.overflow = 'auto';
                     
+                    // Set halaman utama (beranda) sebagai yang aktif
+                    document.querySelectorAll('#mainContent > div[id^="page-"]').forEach(page => page.classList.add('hidden'));
+                    document.getElementById('page-home').classList.remove('hidden');
+                    document.querySelectorAll('.nav-button').forEach(btn => btn.classList.remove('active'));
+                    document.getElementById('nav-home').classList.add('active');
+
                     bgMusic.play().catch(e => console.warn("Autoplay musik diblokir. Menunggu interaksi."));
                 }
             });
@@ -568,7 +580,6 @@
                 e.target.innerHTML = '';
             }
 
-            // INI ADALAH PERBAIKANNYA: Menghapus '<' yang nyasar
             function popMole() {
                 const currentMole = document.querySelector('.mole');
                 if (currentMole) {
@@ -755,4 +766,4 @@
     </script>
 
 </body>
-    </html>
+</html>
