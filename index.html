@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- INI TAG VERIFIKASI GOOGLE-MU -->
+    <meta name="google-site-verification" content="P-jT0LL58tZNnTrFtGtTZRWGXwWHlfasV7e5uiHWiLs" />
+    
     <title>Sebuah Kejutan Untukmu!</title>
     <!-- Memuat Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -561,7 +565,7 @@
             const quotes = [
                 "Jangan lupa senyum hari ini!",
                 "Kamu lebih hebat dari yang kamu kira.",
-                "Istirahat sejenak boleh, menyerah jangan.",
+                "Istahat sejenak boleh, menyerah jangan.",
                 "Satu langkah kecil lebih baik daripada tidak sama sekali.",
                 "Bintang butuh gelap untuk bersinar.",
                 "Percaya deh, semua bakal baik-baik aja.",
@@ -655,14 +659,18 @@
             // PERBAIKAN: Fungsi untuk menghentikan game (timer)
             function endCilukbaGame(isForcedStop) {
                 cilukbaActive = false;
-                clearInterval(cilukbaTimer);
-                startGameButton.disabled = false;
-                startGameButton.textContent = "Mulai Main Lagi!";
+                clearInterval(cilukbaTimer); // Selalu hentikan timer
                 
-                if (!isForcedStop) {
+                // Hanya jalankan jika tombol startnya ada (modal masih terbuka)
+                if(startGameButton) {
+                    startGameButton.disabled = false;
+                    startGameButton.textContent = "Mulai Main Lagi!";
+                }
+                
+                if (!isForcedStop && gameGrid) {
                     gameGrid.innerHTML = `<div class="col-span-3 text-center p-10 text-2xl font-display text-purple-800">Game Selesai!<br>Skor Akhir: ${cilukbaScore}</div>`;
                 }
-                // Jika dipaksa stop (isForcedStop = true), kita tidak tampilkan pesan "Game Selesai", biarkan resetGrid yg urus
+                // Jika dipaksa stop (isForcedStop = true), kita tidak tampilkan pesan "Game Selesai", biarkan resetGrid yg urus saat modal dibuka lagi
             }
             
             // 9. Game Memory Match
